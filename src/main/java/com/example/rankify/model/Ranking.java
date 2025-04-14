@@ -1,11 +1,13 @@
 package com.example.rankify.model;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 
 import java.util.List;
 
 @Entity
 @Table(name = "DB_RANKING")
+@Builder // Allows to create an object with only some attributes
 public class Ranking {
 
     @Id
