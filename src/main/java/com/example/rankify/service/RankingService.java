@@ -7,5 +7,13 @@ import java.util.List;
 
 public interface RankingService {
 
+    Ranking createRanking(RankingDTO rankingDTO);
+
+    List<RankingDTO> getAllRankings();
+
+    RankingDTO getRankingById(Long id);
+
+
+
 
 }

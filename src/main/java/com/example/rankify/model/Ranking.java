@@ -1,13 +1,20 @@
 package com.example.rankify.model;
 
+import com.example.rankify.dto.RankingDTO;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Table(name = "DB_RANKING")
-@Builder // Allows to create an object with only some attributes
+//@Builder // Allows to create an object with only some attributes
+@AllArgsConstructor
+@NoArgsConstructor
+@Data // Allows to generate getters and setters automatically
 public class Ranking {
 
     @Id
@@ -23,4 +30,9 @@ public class Ranking {
 
     @ManyToOne
     private User user;
+
+    public Ranking(RankingDTO rankingDTO){
+        this.category = Category.valueOf(rankingDTO.category());
+        this.rankedEntities = rankingDTO.rankingEntityDTO();
+    }
 }
