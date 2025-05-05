@@ -1,17 +1,20 @@
 package com.example.rankify.mapper;
 
 import com.example.rankify.dto.UserDTO;
-import com.example.rankify.model.User;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
+import com.example.rankify.entity.User;
+import org.mapstruct.Mapper;
+import org.mapstruct.MappingConstants;
 
-@AllArgsConstructor
-@Service
-public class UserMapper {
+import java.util.List;
 
-    private final RankingMapper rankingMapper;
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
+public interface UserMapper {
 
-    public UserDTO toUserDTO(User user){
-        return new UserDTO(user.getId(), user.getName(), rankingMapper.toRankingsDTO(user.getRankings()));
-    }
+    UserDTO toDTO(User user);
+    User toUser(UserDTO userDTO);
+
+
+    List<UserDTO> toDTOs(List<User> users);
+    List<User> toUsers(List<UserDTO> userDTOS);
+
 }

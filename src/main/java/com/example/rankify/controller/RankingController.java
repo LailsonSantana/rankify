@@ -1,12 +1,11 @@
 package com.example.rankify.controller;
 
 import com.example.rankify.dto.RankingDTO;
-import com.example.rankify.model.Ranking;
+import com.example.rankify.entity.Ranking;
 import com.example.rankify.service.RankingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

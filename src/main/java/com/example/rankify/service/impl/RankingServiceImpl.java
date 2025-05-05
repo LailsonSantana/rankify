@@ -1,18 +1,19 @@
-package com.example.rankify.service;
+package com.example.rankify.service.impl;
 
 import com.example.rankify.dto.RankingDTO;
-import com.example.rankify.excepiton.RankingNotFound;
 import com.example.rankify.excepiton.UserNotFound;
 import com.example.rankify.mapper.RankingMapper;
-import com.example.rankify.model.Category;
-import com.example.rankify.model.Ranking;
-import com.example.rankify.model.User;
+import com.example.rankify.entity.Category;
+import com.example.rankify.entity.Ranking;
+import com.example.rankify.entity.User;
 import com.example.rankify.repository.RankingRepository;
 import com.example.rankify.repository.UserRepository;
+import com.example.rankify.service.RankingService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 @Builder
-public class RankingServiceImpl implements RankingService{
+public class RankingServiceImpl implements RankingService {
 
     private final RankingRepository rankingRepository;
     private final UserRepository userRepository;
@@ -42,6 +43,7 @@ public class RankingServiceImpl implements RankingService{
         throw new UserNotFound("User not found");
     }
 
+    @Bean
     @Override
     public List<RankingDTO> getAllRankings() {
         List<Ranking> rankings = rankingRepository.findAll();

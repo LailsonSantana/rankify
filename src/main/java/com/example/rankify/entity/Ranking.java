@@ -1,9 +1,7 @@
-package com.example.rankify.model;
+package com.example.rankify.entity;
 
-import com.example.rankify.dto.RankingDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -31,8 +29,4 @@ public class Ranking {
     @ManyToOne
     private User user;
 
-    public Ranking(RankingDTO rankingDTO){
-        this.category = Category.valueOf(rankingDTO.category());
-        this.rankedEntities = rankingDTO.rankingEntityDTO();
-    }
 }

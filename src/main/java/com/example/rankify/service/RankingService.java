@@ -1,7 +1,7 @@
 package com.example.rankify.service;
 
 import com.example.rankify.dto.RankingDTO;
-import com.example.rankify.model.Ranking;
+import com.example.rankify.entity.Ranking;
 
 import java.util.List;
 

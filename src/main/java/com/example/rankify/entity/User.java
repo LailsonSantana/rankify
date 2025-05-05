@@ -1,6 +1,5 @@
-package com.example.rankify.model;
+package com.example.rankify.entity;
 
-import com.example.rankify.dto.UserDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,9 +22,5 @@ public class User {
     @Column(nullable = true)
     private List<Ranking> rankings;
 
-    public User(UserDTO userDTO){
-        this.name = userDTO.name();
-        this.rankings = null;
-    }
 
 }

@@ -1,6 +1,5 @@
-package com.example.rankify.model;
+package com.example.rankify.entity;
 
-import com.example.rankify.dto.RankedEntityDTO;
 import jakarta.persistence.*;
 import lombok.Data;
 

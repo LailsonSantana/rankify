@@ -1,4 +1,4 @@
-package com.example.rankify.model;
+package com.example.rankify.entity;
 
 public enum Category {
     MOVIE,
