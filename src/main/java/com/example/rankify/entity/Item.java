@@ -3,10 +3,12 @@ package com.example.rankify.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
-@Table(name = "DB_ENTITY")
+@Table(name = "DB_ITEM")
 @Data
-public class RankedEntity {
+public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,7 +16,9 @@ public class RankedEntity {
 
     private String name;
 
-    @ManyToOne
-    private Ranking ranking;
+    private Category category;
+
+    @ManyToMany(mappedBy = "item")
+    private List<Ranking> rankings;
 
 }
