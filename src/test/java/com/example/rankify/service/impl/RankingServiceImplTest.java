@@ -1,11 +1,10 @@
-package com.example.rankify.service;
+package com.example.rankify.service.impl;
 
 import com.example.rankify.dto.RankingDTO;
 import com.example.rankify.mapper.RankingMapper;
 import com.example.rankify.entity.Category;
 import com.example.rankify.entity.Ranking;
 import com.example.rankify.repository.RankingRepository;
-import com.example.rankify.service.impl.RankingServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

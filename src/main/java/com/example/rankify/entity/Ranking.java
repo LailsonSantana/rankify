@@ -2,6 +2,7 @@ package com.example.rankify.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data // Allows to generate getters and setters automatically
+@Builder
 public class Ranking {
 
     @Id

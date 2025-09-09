@@ -5,6 +5,7 @@ import com.example.rankify.entity.User;
 import com.example.rankify.excepiton.UserNotFound;
 import com.example.rankify.mapper.UserMapper;
 import com.example.rankify.repository.UserRepository;
+import com.example.rankify.service.factory.UserFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -52,8 +53,13 @@ class UserServiceImplTest {
 
             // To create a test , is necessary three steps called of AAA
             // Arrange , set up test environment
-            var mockUserDTO = new UserDTO(3L , "Lailson" , null);
-            var mockUser = new User(3L, "Lailson", null);
+            var mockUserDTO = UserFactory.createFakeUserDTO();
+            var mockUser = new User(mockUserDTO.id(),
+                    mockUserDTO.name(),
+                    mockUserDTO.email(),
+                    mockUserDTO.password(),
+                    null
+            );
 
             // It's used to inform your class what it must return in each case
             // This simulates what will be returned
@@ -73,9 +79,14 @@ class UserServiceImplTest {
         @Test
         @DisplayName("Create a new user")
         void shouldCreateANewUser2() {
-            var mockUserDTO = new UserDTO(3L , "Lailson" , null);
-            var mockUser = new User(3L, "Lailson", null);
 
+            var mockUserDTO = UserFactory.createFakeUserDTO();
+            var mockUser = new User(mockUserDTO.id(),
+                    mockUserDTO.name(),
+                    mockUserDTO.email(),
+                    mockUserDTO.password(),
+                    null
+            );
             Mockito.doReturn(mockUser).when(userRepository).save(userArgumentCaptor.capture());
 
             // To create a test , is necessary three steps called of AAA
@@ -102,8 +113,13 @@ class UserServiceImplTest {
         void shouldReturnAnExceptionWhenErrorOccurs(){
             Mockito.doReturn(new RuntimeException()).when(userRepository).save(any());
 
-            var mockUserDTO = new UserDTO(3L , "Lailson" , null);
-            var mockUser = new User(3L, "Lailson", null);
+            var mockUserDTO = UserFactory.createFakeUserDTO();
+            var mockUser = new User(mockUserDTO.id(),
+                    mockUserDTO.name(),
+                    mockUserDTO.email(),
+                    mockUserDTO.password(),
+                    null
+            );
 
             assertThrows(RuntimeException.class, () -> userService.createUser(mockUserDTO));
             //var output = userService.createUser(mockUserDTO);
@@ -117,14 +133,25 @@ class UserServiceImplTest {
         void shouldReturnAllUsers() {
             // There are several ways to create data , like create fake data with factories , or you can
             // create data here.
-            User user1 = new User(1L , "José" , null );
-            User user2 = new User(1L , "Fábio" , null );
-            UserDTO user1DTO = new UserDTO(1L , "José" , null );
-            UserDTO user2DTO = new UserDTO(1L , "Fábio" , null );
+            var mockUserDTO1 = UserFactory.createFakeUserDTO();
+            var mockUser1 = new User(mockUserDTO1.id(),
+                    mockUserDTO1.name(),
+                    mockUserDTO1.email(),
+                    mockUserDTO1.password(),
+                    null
+            );
+
+            var mockUserDTO2 = UserFactory.createFakeUserDTO();
+            var mockUser2 = new User(mockUserDTO2.id(),
+                    mockUserDTO2.name(),
+                    mockUserDTO2.email(),
+                    mockUserDTO2.password(),
+                    null
+            );
 
 
-            var users = List.of(user1 , user2);
-            var usersDTO = List.of(user1DTO , user2DTO);
+            var users = List.of(mockUser1 , mockUser2);
+            var usersDTO = List.of(mockUserDTO1 , mockUserDTO2);
 
             Mockito.when(userMapper.toDTOs(users)).thenReturn(usersDTO);
 
@@ -140,13 +167,18 @@ class UserServiceImplTest {
     class getUserById{
         @Test
         void shouldReturnUserByIdWhenOptionalIsPresent(){
-            User user = new User(2L , "José" , null );
-            UserDTO userDTO = new UserDTO(2L , "José" , null );
-            Mockito.when(userMapper.toDTO(user)).thenReturn(userDTO);
+            var mockUserDTO = UserFactory.createFakeUserDTO();
+            var mockUser = new User(mockUserDTO.id(),
+                    mockUserDTO.name(),
+                    mockUserDTO.email(),
+                    mockUserDTO.password(),
+                    null
+            );
+            Mockito.when(userMapper.toDTO(mockUser)).thenReturn(mockUserDTO);
 
-            Mockito.doReturn(Optional.of(user)).when(userRepository).findById(userIdArgumentCaptor.capture());
+            Mockito.doReturn(Optional.of(mockUser)).when(userRepository).findById(userIdArgumentCaptor.capture());
 
-            var output = userService.getUserById(user.getId());
+            var output = userService.getUserById(mockUser.getId());
 
             assertEquals(output.id() , userIdArgumentCaptor.getValue());
         }

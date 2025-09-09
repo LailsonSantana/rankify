@@ -2,7 +2,8 @@ package com.example.rankify.dto;
 
 import java.util.List;
 
-public record ItemDTO(String name,
+public record ItemDTO(Long id,
+                      String name,
                       String category,
                       List<RankingDTO> rankingDTOS
                       ){

@@ -35,24 +35,23 @@ public class RankingServiceImpl implements RankingService {
         Category category = Category.valueOf(rankingDTO.category().toUpperCase());
 
         if(possibleUser.isPresent()) {
-            Ranking ranking = new Ranking();
+            Ranking ranking = rankingMapper.toRanking(rankingDTO);
 
 
             return rankingRepository.save(ranking);
         }
         throw new UserNotFound("User not found");
     }
-
-    @Bean
+    
     @Override
     public List<RankingDTO> getAllRankings() {
         List<Ranking> rankings = rankingRepository.findAll();
-        return rankingMapper.toRankingsDTO(rankings);
+        return rankingMapper.toDTOs(rankings);
     }
 
     @Override
     public RankingDTO getRankingById(Long id) {
         Optional<Ranking> possibleRanking = rankingRepository.findById(id);
-        return possibleRanking.map(rankingMapper::toRankingDTO).orElseThrow();
+        return possibleRanking.map(rankingMapper::toDTO).orElseThrow();
     }
 }

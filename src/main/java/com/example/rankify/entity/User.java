@@ -18,6 +18,10 @@ public class User {
 
     private String name;
 
+    private String email;
+
+    private String password;
+
     @OneToMany(mappedBy = "user")
     @Column(nullable = true)
     private List<Ranking> rankings;
