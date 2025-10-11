@@ -13,6 +13,10 @@ public interface RankingService {
 
     RankingDTO getRankingById(Long id);
 
+    void deleteRankingById(Long id);
+
+    void updateRankingById(Long id, RankingDTO rankingDTO);
+
 
 
 

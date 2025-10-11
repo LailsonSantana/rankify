@@ -103,8 +103,9 @@ class UserServiceImplTest {
 
             var userCaptured = userArgumentCaptor.getValue();
 
-            assertEquals(mockUser.getName(), userCaptured.getName());
-            assertEquals(mockUser.getId(), mockUser.getId());
+            assertEquals(output.name(), userCaptured.getName());
+            assertEquals(output.id(), userCaptured.getId());
+            assertEquals(output.password(), userCaptured.getPassword());
 
         }
 

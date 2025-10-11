@@ -5,7 +5,7 @@ import java.util.List;
 
 public record RankingDTO(Long id,
                          String category,
-                         List<ItemDTO> itemsDTO,
+                         List<ItemDTO> items,
                          Long userId
-                         ) implements Serializable {
+                         ) implements Serializable{
 }

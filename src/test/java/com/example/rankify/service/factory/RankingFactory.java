@@ -13,10 +13,37 @@ public class RankingFactory {
 
     public static RankingDTO createFakeRankingDTO(){
         return new RankingDTO(
-                2L,
+                1L,
                 String.valueOf(Category.MUSIC),
                 null,
                 1L
+        );
+    }
+
+    public static Ranking createFakeRanking(){
+        return new Ranking(
+                1L,
+                Category.MUSIC,
+                null,
+                UserFactory.createFakeUser()
+        );
+    }
+
+    public static RankingDTO createFakeRankingDTOUpdated(){
+        return new RankingDTO(
+               1L,
+                String.valueOf(Category.COLOR),
+               null,
+               1L
+        );
+    }
+
+    public static Ranking createFakeRankingUpdated(){
+        return new Ranking(
+                1L,
+                Category.MUSIC,
+                null,
+                UserFactory.createFakeUser()
         );
     }
 

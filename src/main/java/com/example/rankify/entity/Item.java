@@ -18,9 +18,10 @@ public class Item {
 
     private String name;
 
+    @Enumerated(EnumType.STRING)
     private Category category;
 
-    @ManyToMany(mappedBy = "item")
+    @ManyToMany
     private List<Ranking> rankings;
 
 }

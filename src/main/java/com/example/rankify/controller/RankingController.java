@@ -6,10 +6,9 @@ import com.example.rankify.service.RankingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/rankings")
@@ -19,7 +18,29 @@ public class RankingController {
     private final RankingService rankingService;
 
     @PostMapping
-    public ResponseEntity<Ranking> create(@RequestBody RankingDTO rankingDTO){
+    public ResponseEntity<?> create(@RequestBody RankingDTO rankingDTO){
         return ResponseEntity.status(HttpStatus.CREATED).body(rankingService.createRanking(rankingDTO));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<RankingDTO>> getAllRankings(){
+        return ResponseEntity.status(HttpStatus.OK).body(rankingService.getAllRankings());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<RankingDTO> getRankingById(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(rankingService.getRankingById(id));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updateRankingById(@PathVariable Long id, @RequestBody RankingDTO rankingDTO ){
+        rankingService.updateRankingById(id, rankingDTO);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteRankingById(@PathVariable Long id){
+        rankingService.deleteRankingById(id);
+        return ResponseEntity.noContent().build();
     }
 }

@@ -27,8 +27,7 @@ public class UserFactory {
                 1L,
                 faker.name().username(),
                 faker.address().fullAddress(),
-                faker.internet().password(),
-                null
+                faker.internet().password()
         );
     }
 }

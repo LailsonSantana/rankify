@@ -25,7 +25,8 @@ public class Ranking {
     @Column // This annotation is used to set up specific configurations to this attribute
     private Category category;
 
-    @ManyToMany(mappedBy = "ranking") // This name must be equal to attribute name put in Ranking class
+    @ManyToMany(mappedBy = "rankings") // This name must be equal to attribute name put in Ranking class
+    // It indicate that this relationship is controlled for attribute  rankings , that is in Item
     private List<Item> items;
 
     @ManyToOne
