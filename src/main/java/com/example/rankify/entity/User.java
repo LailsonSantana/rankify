@@ -1,6 +1,7 @@
 package com.example.rankify.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,7 +26,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     @Column(nullable = true)
-    @JsonIgnore
+    @JsonIgnoreProperties("user")
     private List<Ranking> rankings;
 
 

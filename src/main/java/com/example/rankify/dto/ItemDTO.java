@@ -5,7 +5,6 @@ import java.util.List;
 
 public record ItemDTO(Long id,
                       String name,
-                      String category,
-                      List<RankingDTO> rankingDTOS
+                      String category
                       ) implements Serializable {
 }

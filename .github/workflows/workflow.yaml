@@ -1,0 +1,22 @@
+name: Continuous Integration
+
+on: [pull_request, push]
+
+jobs:
+  continuous-integration:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin' # distribuição OpenJDK recomendada
+          java-version: '17'
+
+      - name: Build and test with Maven
+        run: mvn clean install
+
+

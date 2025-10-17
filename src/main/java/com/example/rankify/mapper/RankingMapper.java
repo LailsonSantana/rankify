@@ -27,11 +27,7 @@ public interface RankingMapper {
     List<RankingDTO> toDTOs(List<Ranking> rankings);
     List<Ranking> toRankings(List<RankingDTO> rankingDTOs);
 
-    ItemDTO toItemDTO(Item item);
-    Item toItem(ItemDTO itemDTO);
 
-    List<ItemDTO> toItemsDTO(List<Item> items);
-    List<Ranking> toItems(List<ItemDTO> itemDTOs);
 
 
 }

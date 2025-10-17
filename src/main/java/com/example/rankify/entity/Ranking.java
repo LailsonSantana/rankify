@@ -1,11 +1,13 @@
 package com.example.rankify.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,9 +29,15 @@ public class Ranking {
 
     @ManyToMany(mappedBy = "rankings") // This name must be equal to attribute name put in Ranking class
     // It indicate that this relationship is controlled for attribute  rankings , that is in Item
-    private List<Item> items;
+    @JsonIgnoreProperties("rankings")
+    private final List<Item> items = new ArrayList<>();
 
     @ManyToOne
     private User user;
+
+    public void addItem(Item item){
+        items.add(item);
+    }
+
 
 }

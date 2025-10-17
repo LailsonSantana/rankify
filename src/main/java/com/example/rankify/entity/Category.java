@@ -6,5 +6,6 @@ public enum Category {
     SERIES,
     MUSIC,
     SINGER,
-    COLOR
+    COLOR,
+    FRUIT
 }
