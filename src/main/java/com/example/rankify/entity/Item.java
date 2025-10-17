@@ -27,7 +27,7 @@ public class Item {
 
     @ManyToMany
     @JsonIgnoreProperties("items")
-    private final List<Ranking> rankings = new ArrayList<>();
+    private List<Ranking> rankings = new ArrayList<>();
 
     public void addRanking(Ranking ranking){
         rankings.add(ranking);

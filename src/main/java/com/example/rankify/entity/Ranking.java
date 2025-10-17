@@ -30,7 +30,7 @@ public class Ranking {
     @ManyToMany(mappedBy = "rankings") // This name must be equal to attribute name put in Ranking class
     // It indicate that this relationship is controlled for attribute  rankings , that is in Item
     @JsonIgnoreProperties("rankings")
-    private final List<Item> items = new ArrayList<>();
+    private List<Item> items = new ArrayList<>();
 
     @ManyToOne
     private User user;
